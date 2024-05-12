@@ -13,8 +13,8 @@ namespace bankAccount
 
         static void ManageUserAccount(BankAccount userAccount)
         {
-            Console.WriteLine($"Welcome {userAccount.Owner} to the besto' BANK all over the world! " +
-                $"Your current balance is {userAccount.ShowBalance()}.");
+            Console.WriteLine($"Welcome {userAccount.Owner} to the besto' BANK all over the world! ");
+            userAccount.ShowBalance();
             do
             {
                 int selectedOption = GetSelectedOption();
