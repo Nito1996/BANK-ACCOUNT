@@ -91,14 +91,8 @@ namespace bankAccount
         public static int GetUserInput()
         {
             string userInput = Console.ReadLine();
-            if (int.TryParse(userInput, out int selectedOption))
-            {
-                return selectedOption;
-            }
-            else
-            {
-                return 0;
-            }
+            int.TryParse(userInput, out int selectedOption);
+            return selectedOption;
         }
     }
 }
