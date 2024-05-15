@@ -28,6 +28,7 @@ namespace bankAccount
                 }
             } while (true);
             Console.WriteLine($"Thank you for using our services. You have a great day {userAccount.Owner}!");
+            Console.WriteLine("");
         }
 
         static int GetSelectedOption()
@@ -39,13 +40,14 @@ namespace bankAccount
             Console.WriteLine("4. Log out");
             Console.WriteLine("");
 
-            int selectedOption;
-            while (!int.TryParse(Console.ReadLine(), out selectedOption) || selectedOption < 1 || selectedOption > 4)
+            int userChoice = GetUserInput();
+            while (userChoice < 1 || userChoice > 4)
             {
                 Console.WriteLine("Invalid input. Please enter a valid numeric value (1-4).");
                 Console.WriteLine("");
+                userChoice = GetUserInput();
             }
-            return selectedOption;
+            return userChoice;
         }
 
         static bool ConfirmLogOut()
@@ -56,11 +58,12 @@ namespace bankAccount
             Console.WriteLine("2.NO");
             Console.WriteLine("");
 
-            int userChoice;
-            while (!int.TryParse(Console.ReadLine(), out userChoice) || (userChoice != 1 && userChoice != 2))
+            int userChoice = GetUserInput();
+            while (userChoice != 1 && userChoice !=2)
             {
                 Console.WriteLine("Invalid input. Please enter either 1 for YES or 2 for NO.");
                 Console.WriteLine("");
+                userChoice = GetUserInput();
             }
             return userChoice == 1;
         }
