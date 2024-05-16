@@ -41,11 +41,11 @@ namespace bankAccount
             Console.WriteLine("");
 
             int userChoice = GetUserInput();
-            while (userChoice < 1 || userChoice > 4)
+            if (userChoice < 1 || userChoice > 4)
             {
                 Console.WriteLine("Invalid input. Please enter a valid numeric value (1-4).");
                 Console.WriteLine("");
-                userChoice = GetUserInput();
+                return GetSelectedOption();
             }
             return userChoice;
         }
@@ -59,11 +59,11 @@ namespace bankAccount
             Console.WriteLine("");
 
             int userChoice = GetUserInput();
-            while (userChoice != 1 && userChoice !=2)
+            if (userChoice != 1 && userChoice !=2)
             {
                 Console.WriteLine("Invalid input. Please enter either 1 for YES or 2 for NO.");
                 Console.WriteLine("");
-                userChoice = GetUserInput();
+                return ConfirmLogOut();
             }
             return userChoice == 1;
         }
