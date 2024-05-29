@@ -1,5 +1,4 @@
 ﻿using System;
-using Microsoft.VisualBasic.FileIO;
 
 namespace bankAccount
 {
@@ -18,14 +17,8 @@ namespace bankAccount
             do
             {
                 int selectedOption = GetSelectedOption();
-                if (selectedOption == 4 && ConfirmLogOut())
-                {
-                        break;                   
-                }
-                else
-                {
-                    ProcessSelectedOption(selectedOption, userAccount);
-                }
+                if (selectedOption == 4 && ConfirmLogOut()) break;
+                ProcessSelectedOption(selectedOption, userAccount);
             } while (true);
             Console.WriteLine($"Thank you for using our services. You have a great day {userAccount.Owner}!");
             Console.WriteLine("");
@@ -59,7 +52,7 @@ namespace bankAccount
             Console.WriteLine("");
 
             int userChoice = GetUserInput();
-            if (userChoice != 1 && userChoice !=2)
+            if (userChoice != 1 && userChoice != 2)
             {
                 Console.WriteLine("Invalid input. Please enter either 1 for YES or 2 for NO.");
                 Console.WriteLine("");
@@ -73,13 +66,30 @@ namespace bankAccount
             switch (selectedOption)
             {
                 case 1:
-                    userAccount.Deposit();
+                    Console.WriteLine("How much money do you want to save?");
+                    if(userAccount.Deposit()){
+                        Console.WriteLine($"Your new balance is {userAccount.ShowBalance()}");
+                    }
+                    else
+                    {
+                    Console.WriteLine("Invalid request.");
+                    };
+                    Console.WriteLine("");
                     break;
                 case 2:
-                    userAccount.Withdraw();
+                    Console.WriteLine("How much money do you want to withdraw?");
+                    if (userAccount.Withdraw()){
+                    Console.WriteLine($"Your new balance is {userAccount.ShowBalance()}");
+                    }
+                    else
+                    {
+                    Console.WriteLine("Invalid request.");
+                    }
+                    Console.WriteLine("");
                     break;
                 case 3:
-                    userAccount.ShowBalance();
+                    Console.WriteLine($"Your current Balance is: {userAccount.ShowBalance()}.");
+                    Console.WriteLine("");
                     break;
                 case 4:
                     Console.WriteLine("");
